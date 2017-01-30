@@ -1,0 +1,5 @@
+*.o
+.env
+firmware.elf
+firmware.hex
+firmware.map
