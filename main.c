@@ -7,12 +7,8 @@
 
 int main() {
 
-  struct blinker_t blinker = {
-    .port = &PORTB,
-    .ddr = &DDRB,
-    .mask = 1 << 5,
-  };
-  blinker_init(&blinker);
+  struct blinker_t blinker;
+  blinker_init(&blinker, &PORTB, &DDRB, 1 << 5);
 
   for (int i = 0; i <= 4; i++) {
     blinker_on(&blinker);
