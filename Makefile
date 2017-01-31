@@ -14,14 +14,15 @@ COMPILEFLAGS = -Wall \
 							 -g \
 							 -Os \
 							 -mmcu=$(MCU) \
-							 -DF_CPU=$(F_CPU)
+							 -DF_CPU=$(F_CPU) \
+							 -DBAUD=$(BAUD)
 
 CFLAGS = $(COMPILEFLAGS) \
 				 -std=c99
 
 ASFLAGS = $(COMPILEFLAGS)
 
-SOURCES = main.c
+SOURCES = main.c uart.c
 OBJECTS = $(SOURCES:.c=.o)
 
 .PHONY: all

@@ -2,6 +2,8 @@
 #include <stdint.h>
 #include <util/delay.h>
 
+#include "uart.h"
+
 struct blinker_t {
   volatile uint8_t * port;
   volatile uint8_t * ddr;
@@ -9,6 +11,19 @@ struct blinker_t {
 } blinker;
 
 int main() {
+
+  uart_init();
+  stdout = &uart_output;
+  stdin = &uart_input;
+
+  char input;
+
+  while(1) {
+    printf("> ");
+    input = getchar();
+    printf("\nInput: %c\n", input);
+  }
+
   blinker.port = &PORTB;
   blinker.ddr = &DDRB;
   blinker.mask = 1 << 5;
