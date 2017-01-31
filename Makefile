@@ -29,7 +29,7 @@ all: firmware.hex
 
 .PHONY: clean
 clean:
-	rm -f firmware.elf firmware.hex $(OBJECTS)
+	rm -f .depend firmware.elf firmware.hex $(OBJECTS)
 
 .PHONY: burn
 burn: firmware.hex
@@ -40,3 +40,9 @@ firmware.hex: firmware.elf
 
 firmware.elf: $(OBJECTS)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(OBJECTS)
+
+.depend: $(SOURCES)
+	rm -f -- .depend
+	$(CC) $(CFLAGS) -MM $^ > .depend;
+	cat .depend
+include .depend
