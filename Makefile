@@ -22,7 +22,7 @@ CFLAGS = $(COMPILEFLAGS) \
 
 ASFLAGS = $(COMPILEFLAGS)
 
-SOURCES = main.c blinker.c uart.c
+SOURCES = main.c uart.c blinker.c
 OBJECTS = $(SOURCES:.c=.o)
 
 .PHONY: all
